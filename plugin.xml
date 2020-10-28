@@ -1,6 +1,6 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
 xmlns:android="http://schemas.android.com/apk/res/android"
-           id="cordova-plugin-firebase-dynamiclinks"
+           id="cordova-plugin-firebase-dynamiclinks-os"
       version="4.8.0">
 
     <name>FirebaseDynamicLinksPlugin</name>
@@ -9,9 +9,8 @@ xmlns:android="http://schemas.android.com/apk/res/android"
     <keywords>cordova</keywords>
 
     <engines>
-        <engine name="cordova" version=">=9.0.0"/>
-        <engine name="cordova-android" version=">=8.0.0"/>
-        <engine name="cordova-ios" version=">=6.0.0"/>
+        <engine name="cordova-android" version=">=8.1.0"/>
+        <engine name="cordova-ios" version=">=5.1.1"/>
     </engines>
 
     <js-module name="FirebaseDynamicLinks" src="www/FirebaseDynamicLinks.js">
@@ -21,7 +20,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
     <preference name="APP_DOMAIN_NAME" />
     <preference name="APP_DOMAIN_PATH" default="/" />
 
-    <dependency id="cordova-plugin-firebase-analytics" version="~4.5.0"/>
+    <dependency id="cordova-plugin-firebase-messaging-os" url="https://github.com/OutsystemsNOS/cordova-plugin-firebase-messaging-os" version="4.6.2"/>
 
     <platform name="android">
         <preference name="ANDROID_FIREBASE_DYNAMICLINKS_VERSION" default="19.1.+"/>
@@ -100,14 +99,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
         <header-file src="src/ios/FirebaseDynamicLinksPlugin.h" />
         <source-file src="src/ios/FirebaseDynamicLinksPlugin.m" />
 
-        <podspec>
-            <config>
-                <source url="https://cdn.cocoapods.org/" />
-            </config>
-            <pods>
-                <pod name="Firebase/DynamicLinks" spec="$IOS_FIREBASE_DYNAMICLINKS_VERSION" />
-            </pods>
-        </podspec>
+        <framework src="Firebase/DynamicLinks" type="podspec" spec="~> 6.32.2" />
     </platform>
 
 </plugin>
