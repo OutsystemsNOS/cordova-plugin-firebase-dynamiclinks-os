@@ -58,14 +58,14 @@
 }
 
 - (FIRDynamicLinkComponents*) createDynamicLinkBuilder:(NSDictionary*) params {
+    /*
     NSURL* link = [[NSURL alloc] initWithString:params[@"link"]];
     NSString* domainUriPrefix = params[@"domainUriPrefix"];
     if (!domainUriPrefix) {
         domainUriPrefix = self.domainUriPrefix;
     }
 
-    FIRDynamicLinkComponents *linkBuilder = [[FIRDynamicLinkComponents alloc]initWithLink:link];
-    //domainURIPrefix:domainUriPrefix
+    FIRDynamicLinkComponents *linkBuilder = [[FIRDynamicLinkComponents alloc]initWithLink:link domainURIPrefix:domainUriPrefix];
     NSDictionary* androidInfo = params[@"androidInfo"];
     if (androidInfo) {
         linkBuilder.androidParameters = [self getAndroidParameters:androidInfo];
@@ -93,7 +93,8 @@
     if (socialMetaTagInfo) {
         linkBuilder.socialMetaTagParameters = [self getSocialMetaTagParameters:socialMetaTagInfo];
     }
-    return linkBuilder;
+    return linkBuilder;*/
+    return null;
 }
 
 - (FIRDynamicLinkAndroidParameters*) getAndroidParameters:(NSDictionary*) androidInfo {
