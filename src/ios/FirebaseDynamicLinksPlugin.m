@@ -64,7 +64,7 @@
         domainUriPrefix = self.domainUriPrefix;
     }
 
-    FIRDynamicLinkComponents *linkBuilder = [[FIRDynamicLinkComponents alloc]initWithLink:link domainURIPrefix:domainUriPrefix];
+    FIRDynamicLinkComponents *linkBuilder = [[FIRDynamicLinkComponents alloc]initWithLink:link domain:domainUriPrefix];
     NSDictionary* androidInfo = params[@"androidInfo"];
     if (androidInfo) {
         linkBuilder.androidParameters = [self getAndroidParameters:androidInfo];
