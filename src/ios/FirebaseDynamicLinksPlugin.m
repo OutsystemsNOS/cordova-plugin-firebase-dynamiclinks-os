@@ -1,5 +1,5 @@
 #import "FirebaseDynamicLinksPlugin.h"
-@import Firebase;
+//@import Firebase;
 
 @implementation FirebaseDynamicLinksPlugin
 
