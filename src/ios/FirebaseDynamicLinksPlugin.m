@@ -30,6 +30,7 @@
 }
 
 - (void)createDynamicLink:(CDVInvokedUrlCommand *)command {
+    /*
     NSDictionary* params = [command.arguments objectAtIndex:0];
     int linkType = [[command.arguments objectAtIndex:1] intValue];
     FIRDynamicLinkComponents *linkBuilder = [self createDynamicLinkBuilder:params];
@@ -55,6 +56,7 @@
             [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
         }];
     }
+    */
 }
 
 - (FIRDynamicLinkComponents*) createDynamicLinkBuilder:(NSDictionary*) params {
@@ -94,7 +96,6 @@
         linkBuilder.socialMetaTagParameters = [self getSocialMetaTagParameters:socialMetaTagInfo];
     }
     return linkBuilder;*/
-    return;
 }
 
 - (FIRDynamicLinkAndroidParameters*) getAndroidParameters:(NSDictionary*) androidInfo {
