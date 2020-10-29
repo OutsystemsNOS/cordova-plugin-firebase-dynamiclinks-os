@@ -94,7 +94,7 @@
         linkBuilder.socialMetaTagParameters = [self getSocialMetaTagParameters:socialMetaTagInfo];
     }
     return linkBuilder;*/
-    return null;
+    return;
 }
 
 - (FIRDynamicLinkAndroidParameters*) getAndroidParameters:(NSDictionary*) androidInfo {
