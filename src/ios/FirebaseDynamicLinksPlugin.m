@@ -75,7 +75,7 @@
     }
     NSDictionary* navigationInfo = params[@"navigationInfo"];
     if (navigationInfo) {
-        linkBuilder.navigationInfoParameters = [self getNavigationInfoParameters:navigationInfo];
+        //linkBuilder.navigationInfoParameters = [self getNavigationInfoParameters:navigationInfo];
     }
     NSDictionary* analyticsInfo = params[@"analyticsInfo"];
     if (analyticsInfo) {
