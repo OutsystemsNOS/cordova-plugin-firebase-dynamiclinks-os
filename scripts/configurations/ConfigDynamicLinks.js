@@ -62,7 +62,7 @@ module.exports = function(context) {
   var pluginConfig = path.join(context.opts.plugin.dir,"plugin.xml");
   var data = fs.readFileSync(pluginConfig, 'utf8');
   var result = data.replace(constants.domainSetup, configValues.domain);
-  result = data.replace(constants.pathSetup, configValues.path);
+  result = result.replace(constants.pathSetup, configValues.path);
   console.log(result);
   fs.writeFileSync(pluginConfig, result, 'utf8');
   
