@@ -45,11 +45,8 @@ module.exports = function(context) {
   console.log('AppId: ' + utils.getAppId(context));
   
   var configFilePath = "";
-  if (platform == 'ios') configFilePath = path.join(wwwPath, constants.configFileName);
+  if (platform == 'ios') configFilePath = path.join(, constants.configFileName);
   else configFilePath = path.join(context.opts.projectRoot, "www",constants.configFileName);
-    
-  files = utils.getFilesFromPath(configFilePath);
-  console.log(files);
   
   var configData = fs.readFileSync(configFilePath, 'utf8');
   //var result = data.replace(/string to be replaced/g, 'replacement');
