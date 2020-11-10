@@ -45,7 +45,7 @@ module.exports = function(context) {
   console.log('AppId: ' + utils.getAppId(context));
   
   var configFilePath = "";
-  if (platform == 'ios') configFilePath = path.join(, constants.configFileName);
+  if (platform == 'ios') configFilePath = wwwPath;
   else configFilePath = path.join(context.opts.projectRoot, "www",constants.configFileName);
   
   var configData = fs.readFileSync(configFilePath, 'utf8');
