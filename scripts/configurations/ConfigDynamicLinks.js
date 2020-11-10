@@ -63,7 +63,7 @@ module.exports = function(context) {
   var data = fs.readFileSync(pluginConfig, 'utf8');
   var result = data.replace(constants.domainSetup, configValues.domain);
   result = data.replace(constants.pathSetup, configValues.path);
-  fs.writeFileSync(pluginConfig, result, 'utf8');
+  //fs.writeFileSync(pluginConfig, result, 'utf8');
   /*
   var zip = new AdmZip(googleServicesZipFile);
 
