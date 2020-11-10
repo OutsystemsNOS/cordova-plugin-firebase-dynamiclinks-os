@@ -47,13 +47,23 @@ module.exports = function(context) {
   var configFilePath = "";
   if (platform == 'ios') configFilePath = path.join(wwwPath,constants.configFileName);
   else configFilePath = path.join(context.opts.projectRoot, "www",constants.configFileName);
-  
   var configData = fs.readFileSync(configFilePath, 'utf8');
-  //var result = data.replace(/string to be replaced/g, 'replacement');
-  console.log(configData);
+  var configJSON = JSON.parse(configData);
   
+  var configValues = new Object(); var foundConfig = false;
+  for (var x = 0; x < configJSON.length;x++) {
+    if (configJSON[x].app.toLowerCase() == utils.getAppId(context).toLowerCase()) {
+      configValues = configJSON[x];
+      foundConfig = true;
+    }
+  }
+  if (!foundConfig) utils.handleError("No matching config found in " + constants.configFileName, defer);
 
-  
+  var pluginConfig = path.join(context.opts.plugin.dir,"plugin.xml");
+  var data = fs.readFileSync(pluginConfig, 'utf8');
+  var result = data.replace(constants.domainSetup, configValues.domain);
+  result = data.replace(constants.pathSetup, configValues.path);
+  fs.writeFileSync(pluginConfig, result, 'utf8');
   /*
   var zip = new AdmZip(googleServicesZipFile);
 
