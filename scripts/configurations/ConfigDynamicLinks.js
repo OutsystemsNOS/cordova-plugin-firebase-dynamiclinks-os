@@ -47,21 +47,15 @@ module.exports = function(context) {
   var configFilePath = "";
   if (platform == 'ios') configFilePath = path.join(wwwPath, constants.configFileName);
   else configFilePath = path.join(context.opts.projectRoot, "www",constants.configFileName);
-  
-  fs.readFile(configFilePath, 'utf8', function (err,data) {
-    if (err) {
-      return utils.handleError(err);
-    }
-    var result = data.replace(/string to be replaced/g, 'replacement');
-    console.log(result);
-    /* fs.writeFile(someFile, result, 'utf8', function (err) {
-      if (err) return console.log(err);
-    }); */
-  });
-  
-  
+    
   files = utils.getFilesFromPath(configFilePath);
   console.log(files);
+  
+  var configData = fs.readFileSync(configFilePath, 'utf8');
+  //var result = data.replace(/string to be replaced/g, 'replacement');
+  console.log(configData);
+  
+
   
   /*
   var zip = new AdmZip(googleServicesZipFile);
