@@ -14,12 +14,12 @@ var constants = {
 module.exports = function(context) {
   var cordovaAbove8 = utils.isCordovaAbove(context, 8);
   var cordovaAbove7 = utils.isCordovaAbove(context, 7);
-  var defer;
+  /*var defer;
   if (cordovaAbove8) {
     defer = require("q").defer();
   } else {
     defer = context.requireCordovaModule("q").defer();
-  }
+  }*/
   /*
   var platform = context.opts.plugin.platform;
   var platformConfig = utils.getPlatformConfigs(platform);
@@ -111,5 +111,5 @@ module.exports = function(context) {
     }
   }
       */
-  return defer.promise;
+  //return defer.promise;
 }
