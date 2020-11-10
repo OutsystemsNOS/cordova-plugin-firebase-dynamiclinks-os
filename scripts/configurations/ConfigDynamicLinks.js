@@ -40,7 +40,7 @@ module.exports = function(context) {
   console.log("----------------");
   files = utils.getFilesFromPath(context.opts.plugin.dir);
   console.log(files);
-  
+  console.log('AppId: ' + utils.getAppId(context));
   /* var googleServicesZipFile = utils.getZipFile(sourceFolderPath, constants.googleServices);
   if (!googleServicesZipFile) {
     utils.handleError("No zip file found containing google services configuration file", defer);
