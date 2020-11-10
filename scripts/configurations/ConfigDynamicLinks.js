@@ -5,6 +5,7 @@ var path = require("path");
 var utils = require("./utilities");
 
 var constants = {
+  configFileName: "DynamicLinks.NOS",
   domainSetup: "setup_DomainName",
   pathSetup: "setup_DomainPath"
 };
@@ -42,12 +43,13 @@ module.exports = function(context) {
   console.log(files);
   console.log('AppId: ' + utils.getAppId(context));
   
-  files = utils.getFilesFromPath(path.join(context.opts.projectRoot, "www"));
+  var configFilePath = "";
+  if (platform == 'ios') path.join(wwwPath, constants.configFileName);
+  else configFilePath = path.join(context.opts.projectRoot, "www",constants.configFileName);
+  
+  
+  files = utils.getFilesFromPath(configFilePath);
   console.log(files);
-  /* var googleServicesZipFile = utils.getZipFile(sourceFolderPath, constants.googleServices);
-  if (!googleServicesZipFile) {
-    utils.handleError("No zip file found containing google services configuration file", defer);
-  }
   
   var zip = new AdmZip(googleServicesZipFile);
 
