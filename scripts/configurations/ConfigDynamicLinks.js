@@ -45,12 +45,12 @@ module.exports = function(context) {
   console.log('AppId: ' + utils.getAppId(context));
   
   var configFilePath = "";
-  if (platform == 'ios') path.join(wwwPath, constants.configFileName);
+  if (platform == 'ios') configFilePath = path.join(wwwPath, constants.configFileName);
   else configFilePath = path.join(context.opts.projectRoot, "www",constants.configFileName);
   
-  fs.readFile(someFile, 'utf8', function (err,data) {
+  fs.readFile(configFilePath, 'utf8', function (err,data) {
     if (err) {
-      return console.log(err);
+      return utils.handleError(err);
     }
     var result = data.replace(/string to be replaced/g, 'replacement');
     console.log(result);
