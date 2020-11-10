@@ -12,7 +12,7 @@ var constants = {
 };
 
 module.exports = function(context) {
-  var cordovaAbove8 = utils.isCordovaAbove(context, 8);
+  /*var cordovaAbove8 = utils.isCordovaAbove(context, 8);
   var cordovaAbove7 = utils.isCordovaAbove(context, 7);
   var defer;
   if (cordovaAbove8) {
@@ -64,6 +64,7 @@ module.exports = function(context) {
   var result = data.replace(constants.domainSetup, configValues.domain);
   result = data.replace(constants.pathSetup, configValues.path);
   //fs.writeFileSync(pluginConfig, result, 'utf8');
+  */
   /*
   var zip = new AdmZip(googleServicesZipFile);
 
