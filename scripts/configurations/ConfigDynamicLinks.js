@@ -33,10 +33,13 @@ module.exports = function(context) {
   console.log("wwwPath" + wwwPath);
   var files = utils.getFilesFromPath(wwwPath);
   console.log(files);
-  console.log("sourceFolderPath" + sourceFolderPath);
+  console.log("sourceFolderPath " + sourceFolderPath);
   files = utils.getFilesFromPath(sourceFolderPath);
   console.log(files);
-  console.log("----------------")
+  console.log('pluginDir ' + context.opts.plugin.dir);
+  console.log("----------------");
+  files = utils.getFilesFromPath(context.opts.plugin.dir);
+  console.log(files);
   
   /* var googleServicesZipFile = utils.getZipFile(sourceFolderPath, constants.googleServices);
   if (!googleServicesZipFile) {
