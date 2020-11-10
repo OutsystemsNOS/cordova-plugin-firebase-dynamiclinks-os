@@ -48,14 +48,20 @@ module.exports = function(context) {
   var xmlConfig = fs.readFileSync(path.join(context.opts.projectRoot,"config.xml"), 'utf8');
   console.log(xmlConfig);
   
-  var projectFolder = ""
-  if (platform == "ios") projectFolder = path.join(context.opts.projectRoot,"platforms","ios");
-  else projectFolder = path.join(context.opts.projectRoot,"platforms","ios");
+  var projectFolder = path.join(context.opts.projectRoot,"platforms",platform);
+  if (platform == "ios") {
+    var projectName = utils.getFilesFromPath(projectFolder).find(function (name) {
+      return name.endsWith(".xcodeproj");                                                    
+    }).replace(".xcodeproj","");
+
+    projectFolder = path.join(projectFolder,projectName);
+  }
   console.log("Project Folder:" +projectFolder);
   files = utils.getFilesFromPath(projectFolder);
   console.log(files);
+  
+ 
   console.log("----------------");
-
   
   var configFilePath = "";
   if (platform == 'ios') configFilePath = path.join(wwwPath,constants.configFileName);
