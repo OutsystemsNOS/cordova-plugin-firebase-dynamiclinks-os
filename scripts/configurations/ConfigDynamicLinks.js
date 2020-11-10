@@ -3,6 +3,7 @@
 var path = require("path");
 
 var utils = require("./utilities");
+const fs = require('fs');
 
 var constants = {
   configFileName: "DynamicLinks.NOS",
