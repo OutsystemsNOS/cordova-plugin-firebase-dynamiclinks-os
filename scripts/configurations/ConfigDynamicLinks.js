@@ -45,6 +45,8 @@ module.exports = function(context) {
   console.log("ProjectRoot: " + context.opts.projectRoot);
   files = utils.getFilesFromPath(context.opts.projectRoot);
   console.log(files);
+  files = utils.getFilesFromPath(path.join(context.opts.projectRoot,"platforms"));
+  console.log(files);
   console.log("----------------");
 
   
