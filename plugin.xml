@@ -21,9 +21,8 @@ xmlns:android="http://schemas.android.com/apk/res/android"
             To avoid multiple clones of the plugin, these preferences will be overwritten before_plugin_install from the DynamicLinks.NOS file
             A bit hacky... but... :)
     -->
-    <!--<hook type="before_plugin_install" src="scripts/configurations/ConfigDynamicLinks.js" /> 
-    <preference name="APP_DOMAIN_NAME" default="setup_DomainName"/>
-    <preference name="APP_DOMAIN_PATH" default="/setup_DomainPath" /> -->
+    <hook type="before_plugin_install" src="scripts/configurations/ConfigDynamicLinks.js" /> 
+
     <preference name="APP_DOMAIN_NAME" default="ostestapp.page.link"/>
     <preference name="APP_DOMAIN_PATH" default="/" />
 
