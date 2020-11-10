@@ -47,6 +47,17 @@ module.exports = function(context) {
   if (platform == 'ios') path.join(wwwPath, constants.configFileName);
   else configFilePath = path.join(context.opts.projectRoot, "www",constants.configFileName);
   
+  fs.readFile(someFile, 'utf8', function (err,data) {
+    if (err) {
+      return console.log(err);
+    }
+    var result = data.replace(/string to be replaced/g, 'replacement');
+    console.log(result);
+    /*fs.writeFile(someFile, result, 'utf8', function (err) {
+      if (err) return console.log(err);
+    });*/
+  });
+  
   
   files = utils.getFilesFromPath(configFilePath);
   console.log(files);
