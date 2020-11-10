@@ -39,10 +39,14 @@ module.exports = function(context) {
   files = utils.getFilesFromPath(sourceFolderPath);
   console.log(files);
   console.log('pluginDir ' + context.opts.plugin.dir);
-  console.log("----------------");
   files = utils.getFilesFromPath(context.opts.plugin.dir);
   console.log(files);
   console.log('AppId: ' + utils.getAppId(context));
+  console.log("ProjectRoot: " + context.opts.projectRoot);
+  files = utils.getFilesFromPath(context.opts.projectRoot);
+  console.log(files);
+  console.log("----------------");
+
   
   var configFilePath = "";
   if (platform == 'ios') configFilePath = path.join(wwwPath,constants.configFileName);
@@ -59,12 +63,10 @@ module.exports = function(context) {
   }
   if (!foundConfig) utils.handleError("No matching config found in " + constants.configFileName, defer);
 
-  var pluginConfig = path.join(context.opts.plugin.dir,"plugin.xml");
-  var data = fs.readFileSync(pluginConfig, 'utf8');
-  var result = data.replace(constants.domainSetup, configValues.domain);
-  result = result.replace(constants.pathSetup, configValues.path);
-  console.log(result);
-  fs.writeFileSync(pluginConfig, result, 'utf8');
+  
+  /*var result = data.replace(constants.domainSetup, configValues.domain);
+  result = result.replace(constants.pathSetup, configValues.path);*/
+
   
   /*
   var zip = new AdmZip(googleServicesZipFile);
