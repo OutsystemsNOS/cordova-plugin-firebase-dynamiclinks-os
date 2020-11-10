@@ -53,15 +53,16 @@ module.exports = function(context) {
     }
     var result = data.replace(/string to be replaced/g, 'replacement');
     console.log(result);
-    /*fs.writeFile(someFile, result, 'utf8', function (err) {
+    /* fs.writeFile(someFile, result, 'utf8', function (err) {
       if (err) return console.log(err);
-    });*/
+    }); */
   });
   
   
   files = utils.getFilesFromPath(configFilePath);
   console.log(files);
   
+  /*
   var zip = new AdmZip(googleServicesZipFile);
 
   var targetPath = path.join(wwwPath, constants.googleServices);
