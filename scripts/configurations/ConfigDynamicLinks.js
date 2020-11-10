@@ -45,7 +45,14 @@ module.exports = function(context) {
   console.log("ProjectRoot: " + context.opts.projectRoot);
   files = utils.getFilesFromPath(context.opts.projectRoot);
   console.log(files);
-  files = utils.getFilesFromPath(path.join(context.opts.projectRoot,"platforms"));
+  var xmlConfig = fs.readFileSync(path.join(context.opts.projectRoot,"config.xml"), 'utf8');
+  console.log(xmlConfig);
+  
+  var projectFolder = ""
+  if (platform == "ios") projectFolder = path.join(context.opts.projectRoot,"platforms","ios");
+  else projectFolder = path.join(context.opts.projectRoot,"platforms","ios");
+  console.log("Project Folder:" +projectFolder);
+  files = utils.getFilesFromPath(projectFolder);
   console.log(files);
   console.log("----------------");
 
