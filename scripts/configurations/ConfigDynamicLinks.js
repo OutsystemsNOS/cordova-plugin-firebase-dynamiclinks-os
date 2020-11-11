@@ -14,12 +14,12 @@ var constants = {
 module.exports = function(context) {
   var cordovaAbove8 = utils.isCordovaAbove(context, 8);
   var cordovaAbove7 = utils.isCordovaAbove(context, 7);
-  /*var defer;
+  var defer;
   if (cordovaAbove8) {
     defer = require("q").defer();
   } else {
     defer = context.requireCordovaModule("q").defer();
-  }*/
+  }
   
   var platform = context.opts.plugin.platform;
   var platformConfig = utils.getPlatformConfigs(platform);
@@ -29,6 +29,20 @@ module.exports = function(context) {
   
   var wwwPath = utils.getResourcesFolderPath(context, platform, platformConfig);
   var sourceFolderPath = utils.getSourceFolderPath(context, wwwPath);
+    var configFilePath = "";
+  if (platform == 'ios') configFilePath = path.join(wwwPath,constants.configFileName);
+  else configFilePath = path.join(context.opts.projectRoot, "www",constants.configFileName);
+  var configData = fs.readFileSync(configFilePath, 'utf8');
+  var configJSON = JSON.parse(configData);
+  
+  var configValues = new Object(); var foundConfig = false;
+  for (var x = 0; x < configJSON.length;x++) {
+    if (configJSON[x].app.toLowerCase() == utils.getAppId(context).toLowerCase()) {
+      configValues = configJSON[x];
+      foundConfig = true;
+    }
+  }
+  if (!foundConfig) utils.handleError("No matching config found in " + constants.configFileName, defer);
   
   console.log("---DEBUGGYN----");
   console.log(platformConfig);
@@ -47,7 +61,12 @@ module.exports = function(context) {
   console.log(files);
   var xmlConfigFile = path.join(context.opts.projectRoot,"config.xml");
   var configData = fs.readFileSync(xmlConfigFile, 'utf8'); // Read as XML
-  console.log(configData);
+  var iosSectionStart = configData.indexOf('<platform name="ios"');
+  var iosSectionEnd = configData.indexOf("</platform>",iosSectionStart);
+  var configToInject = '<config-file target="*-Info.plist" parent="FirebaseDynamicLinksCustomDomains"><array><string>http://$APP_DOMAIN_NAME$APP_DOMAIN_PATH</string><string>https://$APP_DOMAIN_NAME$APP_DOMAIN_PATH</string></array></config-file><config-file target="*-Debug.plist" parent="com.apple.developer.associated-domains"><array><string>applinks:$APP_DOMAIN_NAME</string></array></config-file><config-file target="*-Release.plist" parent="com.apple.developer.associated-domains"><array><string>applinks:$APP_DOMAIN_NAME</string></array></config-file>';
+  var configToInject = configToInject.replaceAll("$APP_DOMAIN_NAME",configValues.domain).replaceAll($APP_DOMAIN_PATH,configValues.path);
+  var newXML = [configData.slice(0, iosSectionEnd), configToInject, configData.slice(iosSectionEnd)].join('');
+  
   
   var projectFolder = path.join(context.opts.projectRoot,"platforms",platform);
   if (platform == "ios") {
@@ -64,20 +83,6 @@ module.exports = function(context) {
  
   console.log("----------------");
   
-  var configFilePath = "";
-  if (platform == 'ios') configFilePath = path.join(wwwPath,constants.configFileName);
-  else configFilePath = path.join(context.opts.projectRoot, "www",constants.configFileName);
-  var configData = fs.readFileSync(configFilePath, 'utf8');
-  var configJSON = JSON.parse(configData);
-  
-  var configValues = new Object(); var foundConfig = false;
-  for (var x = 0; x < configJSON.length;x++) {
-    if (configJSON[x].app.toLowerCase() == utils.getAppId(context).toLowerCase()) {
-      configValues = configJSON[x];
-      foundConfig = true;
-    }
-  }
-  if (!foundConfig) utils.handleError("No matching config found in " + constants.configFileName, defer);
 
   
   /*var result = data.replace(constants.domainSetup, configValues.domain);
