@@ -46,8 +46,6 @@ module.exports = function(context) {
   files = utils.getFilesFromPath(context.opts.projectRoot);
   console.log(files);
   var xmlConfigFile = path.join(context.opts.projectRoot,"config.xml");
-      //
-  console.log("Config.XML " + xmlConfig);
   var configData = fs.readFileSync(xmlConfigFile, 'utf8'); // Read as XML
   console.log(configData);
   
