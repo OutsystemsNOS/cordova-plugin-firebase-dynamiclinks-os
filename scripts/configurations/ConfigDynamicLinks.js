@@ -4,7 +4,6 @@ var path = require("path");
 
 var utils = require("./utilities");
 const fs = require('fs');
-const parser = require('xml2json');
 
 var constants = {
   configFileName: "DynamicLinks.NOS",
@@ -50,7 +49,6 @@ module.exports = function(context) {
       //
   console.log("Config.XML " + xmlConfig);
   var configData = fs.readFileSync(xmlConfigFile, 'utf8'); // Read as XML
-  configData = JSON.parse(parser.toJson(configData, {reversible: true})); // Convert to JSON
   console.log(configData);
   
   var projectFolder = path.join(context.opts.projectRoot,"platforms",platform);
