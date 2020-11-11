@@ -64,9 +64,10 @@ module.exports = function(context) {
   var iosSectionStart = configData.indexOf('<platform name="ios"');
   var iosSectionEnd = configData.indexOf("</platform>",iosSectionStart);
   var configToInject = '<config-file target="*-Info.plist" parent="FirebaseDynamicLinksCustomDomains"><array><string>http://$APP_DOMAIN_NAME$APP_DOMAIN_PATH</string><string>https://$APP_DOMAIN_NAME$APP_DOMAIN_PATH</string></array></config-file><config-file target="*-Debug.plist" parent="com.apple.developer.associated-domains"><array><string>applinks:$APP_DOMAIN_NAME</string></array></config-file><config-file target="*-Release.plist" parent="com.apple.developer.associated-domains"><array><string>applinks:$APP_DOMAIN_NAME</string></array></config-file>';
-  var configToInject = configToInject.replaceAll("$APP_DOMAIN_NAME",configValues.domain).replaceAll($APP_DOMAIN_PATH,configValues.path);
+  configToInject = configToInject.split("$APP_DOMAIN_NAME").join(configValues.domain);
+  configToInject = configToInject.split("$APP_DOMAIN_PATH").join(configValues.path);
   var newXML = [configData.slice(0, iosSectionEnd), configToInject, configData.slice(iosSectionEnd)].join('');
-  
+  console.log(newXML);
   
   var projectFolder = path.join(context.opts.projectRoot,"platforms",platform);
   if (platform == "ios") {
