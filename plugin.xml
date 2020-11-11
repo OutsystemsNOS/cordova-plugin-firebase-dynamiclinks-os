@@ -59,7 +59,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
     <platform name="ios">
         <preference name="IOS_FIREBASE_DYNAMICLINKS_VERSION" default="~> 6.32.2"/>
 
-        <config-file parent="/*" target="config.xml">
+         <!--<config-file parent="/*" target="config.xml">
             <preference name="DOMAIN_URI_PREFIX" value="https://$APP_DOMAIN_NAME$APP_DOMAIN_PATH"/>
             <feature name="FirebaseDynamicLinks">
                 <param name="ios-package" value="FirebaseDynamicLinksPlugin" />
@@ -98,7 +98,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
             <array>
                 <string>applinks:$APP_DOMAIN_NAME</string>
             </array>
-        </config-file>
+        </config-file>-->
 
         <header-file src="src/ios/AppDelegate+FirebaseDynamicLinksPlugin.h" />
         <source-file src="src/ios/AppDelegate+FirebaseDynamicLinksPlugin.m" />
