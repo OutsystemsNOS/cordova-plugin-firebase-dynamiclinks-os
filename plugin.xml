@@ -29,8 +29,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
     <preference name="APP_DOMAIN_NAME" default="ostestapp.page.link"/>
     <preference name="APP_DOMAIN_PATH" default="/" />
 
-    <!--<dependency id="cordova-plugin-firebase-messaging-os" url="https://github.com/OutsystemsNOS/cordova-plugin-firebase-messaging-os" version="4.6.2"/>-->
-    <dependency id="cordova-plugin-firebase-messaging-os" url="https://github.com/OutsystemsNOS/cordova-plugin-firebase-messaging-os"/>
+    <dependency id="cordova-plugin-firebase-messaging-os" url="https://github.com/OutsystemsNOS/cordova-plugin-firebase-messaging-os" version="4.6.3"/>
     <platform name="android">
         <preference name="ANDROID_FIREBASE_DYNAMICLINKS_VERSION" default="17.0.0"/>
 
