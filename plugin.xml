@@ -105,7 +105,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
         <header-file src="src/ios/FirebaseDynamicLinksPlugin.h" />
         <source-file src="src/ios/FirebaseDynamicLinksPlugin.m" />
 
-        <framework src="FirebaseDynamicLinks" type="podspec" spec="~> 6.32.2" />
+        <framework src="FirebaseDynamicLinks" type="podspec" spec="7.11.0" />
     </platform>
 
 </plugin>
